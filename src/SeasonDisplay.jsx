@@ -8,20 +8,20 @@ const getSeason = (lat, month) => {
   }
 };
 
-const seasons = {
-  winter: 'Burr, it is chilly',
-  summer: 'Lets hit the beach',
+const seasonConfig = {
+  winter: { text: 'Burr, it is chilly', iconName: 'sun' },
+  summer: { text: 'Lets hit the beach', iconName: 'snowflake' },
 };
 
 const SeasonDisplay = ({ lat }) => {
   const season = getSeason(lat, new Date().getMonth());
-  const icon = season === 'winter' ? 'snowflake' : 'sun';
+  const { text, iconName } = seasonConfig[season];
 
   return (
     <div>
-      <i className={`${icon} icon`}></i>
-      <h1>{seasons[season]}</h1>
-      <i className={`${icon} icon`}></i>
+      <i className={`${iconName} icon`}></i>
+      <h1>{text}</h1>
+      <i className={`${iconName} icon`}></i>
     </div>
   );
 };
